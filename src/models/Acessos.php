@@ -1,5 +1,7 @@
 <?php
 
+require_once('./config/Database.php');
+
 class Acessos
 {
     private $db;
@@ -34,7 +36,7 @@ class Acessos
         $sql = "SELECT COUNT(*) AS total_acessos FROM acessos";
         $executar = $db->prepare($sql);
         $executar->execute();
-        
+
         $resultado = $executar->fetch();
 
         return ($resultado) ? ['code' => 200, 'total_acessos' => $resultado['total_acessos']] : ['code' => 400, 'status' => 'Erro ao contar acessos'];

@@ -1,5 +1,8 @@
 <?php
 
+
+// require_once('./config/Database.php');
+
 class Cartas
 {
     private $db;
@@ -10,23 +13,38 @@ class Cartas
         $this->db = $database->getConnection();
     }
 
-    public function inserirCarta($titulo, $resumo, $demandas, $imagens, $coordenadas_pino, $estado, $abreviacao_estado, $cidade)
+    private function tituloExiste($titulo)
+    {
+        $sql = "SELECT id FROM cartas WHERE titulo = :titulo LIMIT 1";
+        $executar = $this->db->prepare($sql);
+        $executar->bindValue(':titulo', $titulo);
+        $executar->execute();
+        $result = $executar->fetch();
+
+        return $result ? true : false;
+    }
+
+    public function inserirCarta($data)
     {
         $db = $this->db;
+
+        if ($this->tituloExiste($data['titulo'])) {
+            return ['code' => 400, 'status' => 'Erro: já existe uma carta com esse título'];
+        }
 
         $sql = "INSERT INTO cartas (titulo, resumo, demandas, imagens, coordenadas_pino, estado, abreviacao_estado, cidade)
                 VALUES (:titulo, :resumo, :demandas, :imagens, :coordenadas_pino, :estado, :abreviacao_estado, :cidade)";
 
-        $executar = $db->prepare($sql);
+        $executar = $this->db->prepare($sql);
 
-        $executar->bindValue(':titulo', $titulo);
-        $executar->bindValue(':resumo', $resumo);
-        $executar->bindValue(':demandas', $demandas);
-        $executar->bindValue(':imagens', $imagens);
-        $executar->bindValue(':coordenadas_pino', $coordenadas_pino);
-        $executar->bindValue(':estado', $estado);
-        $executar->bindValue(':abreviacao_estado', $abreviacao_estado);
-        $executar->bindValue(':cidade', $cidade);
+        $executar->bindValue(':titulo', $data['titulo']);
+        $executar->bindValue(':resumo', $data['resumo']);
+        $executar->bindValue(':demandas', $data['demandas']);
+        $executar->bindValue(':imagens', $data['imagens']);
+        $executar->bindValue(':coordenadas_pino', $data['coordenadas_pino']);
+        $executar->bindValue(':estado', $data['estado']);
+        $executar->bindValue(':abreviacao_estado', $data['abreviacao_estado']);
+        $executar->bindValue(':cidade', $data['cidade']);
 
         $executar->execute();
         $affected_lines = $executar->rowCount();
@@ -34,10 +52,13 @@ class Cartas
         return ($affected_lines > 0) ? ['code' => 200, 'status' => 'Carta inserida com sucesso'] : ['code' => 400, 'status' => 'Erro ao inserir carta'];
     }
 
-    public function editarCarta($titulo, $novoTitulo, $resumo, $demandas, $imagens, $coordenadas_pino, $estado, $abreviacao_estado, $cidade)
+    public function editarCarta($data)
     {
-
         $db = $this->db;
+
+        if ($data['titulo'] !== $data['novoTitulo'] && $this->tituloExiste($data['novoTitulo'])) {
+            return ['code' => 400, 'status' => 'Erro: já existe uma carta com esse novo título'];
+        }
 
         $sql = "UPDATE cartas SET titulo = :novoTitulo, resumo = :resumo, demandas = :demandas, imagens = :imagens, coordenadas_pino = :coordenadas_pino,
                estado = :estado, abreviacao_estado = :abreviacao_estado, cidade = :cidade
@@ -45,15 +66,15 @@ class Cartas
 
         $executar = $db->prepare($sql);
 
-        $executar->bindValue(':titulo', $titulo);  
-        $executar->bindValue(':novoTitulo', $novoTitulo); 
-        $executar->bindValue(':resumo', $resumo);
-        $executar->bindValue(':demandas', $demandas);
-        $executar->bindValue(':imagens', $imagens);
-        $executar->bindValue(':coordenadas_pino', $coordenadas_pino);
-        $executar->bindValue(':estado', $estado);
-        $executar->bindValue(':abreviacao_estado', $abreviacao_estado);
-        $executar->bindValue(':cidade', $cidade);
+        $executar->bindValue(':titulo', $data['titulo']);
+        $executar->bindValue(':novoTitulo', $data['novoTitulo']);
+        $executar->bindValue(':resumo', $data['resumo']);
+        $executar->bindValue(':demandas', $data['demandas']);
+        $executar->bindValue(':imagens', $data['imagens']);
+        $executar->bindValue(':coordenadas_pino', $data['coordenadas_pino']);
+        $executar->bindValue(':estado', $data['estado']);
+        $executar->bindValue(':abreviacao_estado', $data['abreviacao_estado']);
+        $executar->bindValue(':cidade', $data['cidade']);
 
         $executar->execute();
         $affected_lines = $executar->rowCount();
@@ -69,7 +90,7 @@ class Cartas
         $executar->execute();
         $usuario = $executar->fetch();
 
-        return $usuario && $usuario['tipos'] === 'administrador';
+        return $usuario && $usuario['tipos'] == 'administrador';
     }
 
     public function excluirCartas($userEmail, $titulo)

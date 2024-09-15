@@ -9,13 +9,18 @@ $Usuarios = new Usuarios();
 $acessos = new Acessos();
 
 
-// $nome = 'Caio Souza';
-// $tipo = 'administrador';
-// $email = 'caiosouza@gmail.com';
-// $senha = '203040';
+$data_cadastrar = [
+    'nome' => 'João Souza',
+    'tipo' => 'administrador',
+    'email' => 'silva@example.com',
+    'senha' => 'senha123'  // Certifique-se de usar hash de senha em produção
+];
 
-// $cadastro = $Usuarios->CadastrarUsuario($nome, $tipo, $email, $senha);
-// print_r($cadastro);
+// Chamar a função para cadastrar o usuário passando o array $data_cadastrar
+$resultado = $Usuarios->CadastrarUsuario($data_cadastrar);
+print_r($resultado);
+
+
 
 
 // $adminEmail = 'caiosouza@gmail.com';
@@ -23,34 +28,39 @@ $acessos = new Acessos();
 // $email = '';
 
 
-// $cadastrar = $Usuarios->ExcluirUsuario($adminEmail, $email);
-// print_r($cadastrar);
+// $excluir = $Usuarios->ExcluirUsuario($adminEmail, $email);
+// print_r($excluir);
 
-// $titulo = 'Título Exemplo de Carta';
-// $resumo = 'Este é um resumo exemplo para a carta que será inserida no banco de dados.';
-// $demandas = 'Aqui estão as demandas relacionadas a esta carta.';
-// $imagens = 'http://exemplo.com/imagem1.jpg, http://exemplo.com/imagem2.jpg';
-// $coordenadas_pino = '23.5505,-46.6333'; // Exemplo de coordenadas de São Paulo
-// $estado = 'São Paulo';
-// $abreviacao_estado = 'SP';
-// $cidade = 'São Paulo';
+// $data_inserir = [
+//     'titulo' => 'Título Rei',
+//     'resumo' => 'Resumo da carta de exemplo',
+//     'demandas' => 'Demandas de exemplo',
+//     'imagens' => 'http://example.com/image.jpg',
+//     'coordenadas_pino' => '23.5505,-46.6333',
+//     'estado' => 'São Paulo',
+//     'abreviacao_estado' => 'SP',
+//     'cidade' => 'São Paulo'
+// ];
 
-// $cadastro_Carta = $cartas->inserirCarta($titulo, $resumo, $demandas, $imagens, $coordenadas_pino, $estado, $abreviacao_estado, $cidade);
-// print_r($cadastro_Carta);
+// $resultado = $cartas->inserirCarta($data_inserir);
+// print_r($resultado);
 
 
 
-// $titulo = 'Título Atualizado da Carta';  
-// $novoTitulo = 'Título Atualizado'; 
-// $resumo = 'Este é um resumo atualizado.';
-// $demandas = 'Demandas do rio.';
-// $imagens = 'http://exemplo.com/nova_imagem1.jpg, http://exemplo.com/nova_imagem2.jpg';
-// $coordenadas_pino = '23.5505,-46.6333';  // Exemplo de coordenadas de São Paulo
-// $estado = 'Rio de Janeiro';
-// $abreviacao_estado = 'RJ';
-// $cidade = 'Rio de Janeiro';
+// $data_editar = [
+//     'titulo' => 'Novo Título',  // Título atual
+//     'novoTitulo' => 'New',
+//     'resumo' => 'Resumo atualizado da carta',
+//     'demandas' => 'Demandas atualizadas',
+//     'imagens' => 'http://example.com/new_image.jpg',
+//     'coordenadas_pino' => '23.5505,-46.6333',
+//     'estado' => 'Rio de Janeiro',
+//     'abreviacao_estado' => 'RJ',
+//     'cidade' => 'Rio de Janeiro'
+// ];
 
-// $atualizar = $cartas->editarCarta($titulo, $novoTitulo, $resumo, $demandas, $imagens, $coordenadas_pino, $estado, $abreviacao_estado, $cidade);
+// $resultado = $cartas->editarCarta($data_editar);
+// print_r($resultado);
 
 // print_r($atualizar);
 
@@ -60,5 +70,5 @@ $acessos = new Acessos();
 // $excluir = $cartas->excluirCartas($userEmail, $titulo);
 // print_r($excluir);
 
-$resultado = $acessos->contarAcessos();
-print_r($resultado);
+// $resultado = $acessos->contarAcessos();
+// print_r($resultado);

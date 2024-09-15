@@ -1,6 +1,6 @@
 <?php
 
-require_once('./config/Database.php');
+// require_once('./config/Database.php');
 
 class Usuarios
 {
@@ -13,38 +13,41 @@ class Usuarios
         $this->db = $database->getConnection();
     }
 
-    public function CadastrarUsuario($nome, $tipo, $email, $senha)
+    private function emailExiste($email)
     {
-
-        $db = $this->db;
-
-        $sql_check = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
-        $executar = $db->prepare($sql_check);
+        $sql = "SELECT id FROM usuarios WHERE email = :email LIMIT 1";
+        $executar = $this->db->prepare($sql);
         $executar->bindValue(':email', $email);
         $executar->execute();
         $result = $executar->fetch();
 
-        if ($result) {
-            return ['code' => 400, 'status' => 'Email já cadastrado'];
+        return $result ? true : false;
+    }
+
+    public function CadastrarUsuario($data)
+    {
+        $db = $this->db;
+
+        if ($this->emailExiste($data['email'])) {
+            return ['code' => 400, 'status' => 'Erro: Email já cadastrado'];
         }
+
         $current_date = time();
-        $sql = "INSERT INTO usuarios(nome, tipos, email, senha, data_cadastro) VALUES (:nome, :tipos, :email, :senha, :data_cadastro) ";
+        $sql = "INSERT INTO usuarios(nome, tipos, email, senha, data_cadastro) 
+                VALUES (:nome, :tipos, :email, :senha, :data_cadastro)";
 
         $executar = $db->prepare($sql);
-
-        $executar->bindVAlue(':nome', $nome);
-        $executar->bindValue(':tipos', $tipo);
-        $executar->bindValue(':email', $email);
-        $executar->bindValue(':senha', $senha);
+        $executar->bindValue(':nome', $data['nome']);
+        $executar->bindValue(':tipos', $data['tipo']);
+        $executar->bindValue(':email', $data['email']);
+        $executar->bindValue(':senha', $data['senha']);
         $executar->bindValue(':data_cadastro', $current_date);
-
 
         $executar->execute();
         $affected_lines = $executar->rowCount();
 
-        return ($affected_lines > 0) ? ['code' => 200, 'status' => 'cadastrado realizado com sucesso'] : ['code' => 400, 'status' => 'Erro ao cadastrar usuario'];
+        return ($affected_lines > 0) ? ['code' => 200, 'status' => 'Cadastro realizado com sucesso'] : ['code' => 400, 'status' => 'Erro ao cadastrar usuário'];
     }
-
 
     public function ExcluirUsuario($adminEmail, $email)
     {
