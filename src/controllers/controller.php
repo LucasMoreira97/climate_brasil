@@ -3,36 +3,9 @@
 include_once '../../config/Database.php';
 include_once '../models/Cartas.php';
 include_once '../models/Usuarios.php';
-include_once '../models/Acessos.php';
+// include_once '../models/Acessos.php';
 
-$data = [
-
-    'operacao' => 'adicionar_nova_carta',
-    // 'operacao' => 'editar_uma_carta',
-    // 'operacao' => 'excluir_carta',
-    // 'operacao' => 'cadastrar_usuario',
-    // 'operacao' => 'excluir_usuario',
-    // 'operacao' => 'registrar_acesso',
-    // 'operacao' => 'contar_acessos',
-
-    'titulo' => 'Quimadas',
-    'resumo' => 'blablablba',
-    'demandas' =>  'A.B,C',
-    'imagens' => 'http://example.com/image.jpg',
-    'coordenadas_pino' =>  '23.5505,-46.6333',
-    'estado' => 'São Paulo',
-    'abreviacao_estado' => 'SP',
-    'cidade' => 'São Paulo',
-    'novoTitulo' => 'New NEW',
-    'nome' => 'João Souza',
-    'tipo' => 'administrador',
-    'email' => 'silva@example.com',
-    'senha' => 'senha123',
-
-];
-
-$userEmail = 'a@a';
-$adminEmail = 'silva@example.com';
+$data = json_decode(file_get_contents('php://input'), true);
 
 switch ($data['operacao']) {
 
@@ -40,6 +13,19 @@ switch ($data['operacao']) {
         $Cartas = new Cartas();
         $inserir_carta = $Cartas->inserirCarta($data);
         print_r($inserir_carta);
+        break;
+
+    case 'coordenadas_cartas':
+        $resposta = (new Cartas)->coordenadaCartas(null, $data['regiao'], $data['estado']);
+        break;
+
+    case 'detalhes_carta':
+        $detalhes = (new Cartas)->listarCartas($data['id_carta']);
+        $resposta = $detalhes[0];
+        break;
+
+    case 'cartas_regiao':
+        $resposta = (new Cartas)->coordenadaCartas(null, $data['regiao']);
         break;
 
     case 'editar_uma_carta';
@@ -78,3 +64,5 @@ switch ($data['operacao']) {
         print_r($contar_acessos);
         break;
 }
+
+echo json_encode($resposta);
