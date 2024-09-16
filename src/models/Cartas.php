@@ -1,6 +1,5 @@
 <?php
 
-
 // require_once('./config/Database.php');
 
 class Cartas
@@ -13,41 +12,39 @@ class Cartas
         $this->db = $database->getConnection();
     }
 
-    private function tituloExiste($titulo)
+    private function cartaExiste($titulo)
     {
         $sql = "SELECT id FROM cartas WHERE titulo = :titulo LIMIT 1";
-        $executar = $this->db->prepare($sql);
-        $executar->bindValue(':titulo', $titulo);
-        $executar->execute();
-        $result = $executar->fetch();
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':titulo', $titulo);
+        $stmt->execute();
+        $result = $stmt->fetch();
 
         return $result ? true : false;
     }
 
     public function inserirCarta($data)
     {
-        $db = $this->db;
-
-        if ($this->tituloExiste($data['titulo'])) {
+        if ($this->cartaExiste($data['titulo'])) {
             return ['code' => 400, 'status' => 'Erro: já existe uma carta com esse título'];
         }
 
         $sql = "INSERT INTO cartas (titulo, resumo, demandas, imagens, coordenadas_pino, estado, abreviacao_estado, cidade)
                 VALUES (:titulo, :resumo, :demandas, :imagens, :coordenadas_pino, :estado, :abreviacao_estado, :cidade)";
 
-        $executar = $this->db->prepare($sql);
+        $stmt = $this->db->prepare($sql);
 
-        $executar->bindValue(':titulo', $data['titulo']);
-        $executar->bindValue(':resumo', $data['resumo']);
-        $executar->bindValue(':demandas', $data['demandas']);
-        $executar->bindValue(':imagens', $data['imagens']);
-        $executar->bindValue(':coordenadas_pino', $data['coordenadas_pino']);
-        $executar->bindValue(':estado', $data['estado']);
-        $executar->bindValue(':abreviacao_estado', $data['abreviacao_estado']);
-        $executar->bindValue(':cidade', $data['cidade']);
+        $stmt->bindValue(':titulo', $data['titulo']);
+        $stmt->bindValue(':resumo', $data['resumo']);
+        $stmt->bindValue(':demandas', $data['demandas']);
+        $stmt->bindValue(':imagens', $data['imagens']);
+        $stmt->bindValue(':coordenadas_pino', $data['coordenadas_pino']);
+        $stmt->bindValue(':estado', $data['estado']);
+        $stmt->bindValue(':abreviacao_estado', $data['abreviacao_estado']);
+        $stmt->bindValue(':cidade', $data['cidade']);
 
-        $executar->execute();
-        $affected_lines = $executar->rowCount();
+        $stmt->execute();
+        $affected_lines = $stmt->rowCount();
 
         return ($affected_lines > 0) ? ['code' => 200, 'status' => 'Carta inserida com sucesso'] : ['code' => 400, 'status' => 'Erro ao inserir carta'];
     }
@@ -56,7 +53,7 @@ class Cartas
     {
         $db = $this->db;
 
-        if ($data['titulo'] !== $data['novoTitulo'] && $this->tituloExiste($data['novoTitulo'])) {
+        if ($data['titulo'] !== $data['novoTitulo'] && $this->cartaExiste($data['novoTitulo'])) {
             return ['code' => 400, 'status' => 'Erro: já existe uma carta com esse novo título'];
         }
 
@@ -64,51 +61,87 @@ class Cartas
                estado = :estado, abreviacao_estado = :abreviacao_estado, cidade = :cidade
                 WHERE titulo = :titulo";
 
-        $executar = $db->prepare($sql);
+        $stmt = $db->prepare($sql);
 
-        $executar->bindValue(':titulo', $data['titulo']);
-        $executar->bindValue(':novoTitulo', $data['novoTitulo']);
-        $executar->bindValue(':resumo', $data['resumo']);
-        $executar->bindValue(':demandas', $data['demandas']);
-        $executar->bindValue(':imagens', $data['imagens']);
-        $executar->bindValue(':coordenadas_pino', $data['coordenadas_pino']);
-        $executar->bindValue(':estado', $data['estado']);
-        $executar->bindValue(':abreviacao_estado', $data['abreviacao_estado']);
-        $executar->bindValue(':cidade', $data['cidade']);
+        $stmt->bindValue(':titulo', $data['titulo']);
+        $stmt->bindValue(':novoTitulo', $data['novoTitulo']);
+        $stmt->bindValue(':resumo', $data['resumo']);
+        $stmt->bindValue(':demandas', $data['demandas']);
+        $stmt->bindValue(':imagens', $data['imagens']);
+        $stmt->bindValue(':coordenadas_pino', $data['coordenadas_pino']);
+        $stmt->bindValue(':estado', $data['estado']);
+        $stmt->bindValue(':abreviacao_estado', $data['abreviacao_estado']);
+        $stmt->bindValue(':cidade', $data['cidade']);
 
-        $executar->execute();
-        $affected_lines = $executar->rowCount();
+        $stmt->execute();
+        $affected_lines = $stmt->rowCount();
 
         return ($affected_lines > 0) ? ['code' => 200, 'status' => 'Carta atualizada com sucesso'] : ['code' => 400, 'status' => 'Erro ao atualizar carta ou nenhum dado foi modificado'];
     }
 
-    private function isAdmin($userEmail)
-    {
-        $sql = "SELECT tipos FROM usuarios WHERE email = :email LIMIT 1";
-        $executar = $this->db->prepare($sql);
-        $executar->bindValue(':email', $userEmail);
-        $executar->execute();
-        $usuario = $executar->fetch();
-
-        return $usuario && $usuario['tipos'] == 'administrador';
-    }
-
     public function excluirCartas($userEmail, $titulo)
     {
-        $db = $this->db;
-
-        if (!$this->isAdmin($userEmail)) {
-            return ['code' => 403, 'status' => 'Ação não permitida. Apenas administradores podem excluir cartas.'];
-        }
 
         $sql = "DELETE FROM cartas WHERE titulo = :titulo";
-        $executar = $db->prepare($sql);
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':titulo', $titulo);
+        $stmt->execute();
 
-        $executar->bindValue(':titulo', $titulo);
-
-        $executar->execute();
-        $affected_lines = $executar->rowCount();
-
+        $affected_lines = $stmt->rowCount();
         return ($affected_lines > 0) ? ['code' => 200, 'status' => 'Carta excluída com sucesso'] : ['code' => 400, 'status' => 'Erro ao excluir carta ou carta não encontrada'];
+    }
+
+    public function listarCartas($id_carta = null, $regiao = null, $estado = null)
+    {
+
+        $sql = 'SELECT * FROM cartas WHERE removida = 0';
+        $sql .= !empty($id_carta) ? ' AND id = :id_carta' : '';
+        $sql .= !empty($regiao) ? ' AND regiao = :regiao' : '';
+        $sql .= !empty($estado) ? ' AND estado = :estado' : '';
+
+        $stmt = $this->db->prepare($sql);
+
+        if (!empty($id_carta)) {
+            $stmt->bindValue(':id_carta', $id_carta);
+        }
+
+        if (!empty($regiao)) {
+            $stmt->bindValue(':regiao', $regiao);
+        }
+
+        if (!empty($estado)) {
+            $stmt->bindValue(':estado', $estado);
+        }
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function coordenadaCartas($id_carta = null, $regiao = null, $estado = null)
+    {
+
+        $sql = 'SELECT id, titulo, regiao, coordenadas_pino FROM cartas WHERE removida = 0';
+        $sql .= !empty($id_carta) ? ' AND id = :id_carta' : '';
+        $sql .= !empty($regiao) ? ' AND regiao = :regiao' : '';
+        $sql .= !empty($estado) ? ' AND estado = :estado' : '';
+
+        $stmt = $this->db->prepare($sql);
+
+        if (!empty($id_carta)) {
+            $stmt->bindValue(':id_carta', $id_carta);
+        }
+
+        if (!empty($regiao)) {
+            $stmt->bindValue(':regiao', $regiao);
+        }
+
+        if (!empty($estado)) {
+            $stmt->bindValue(':estado', $estado);
+        }
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

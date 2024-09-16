@@ -16,15 +16,15 @@ class Usuarios
     private function emailExiste($email)
     {
         $sql = "SELECT id FROM usuarios WHERE email = :email LIMIT 1";
-        $executar = $this->db->prepare($sql);
-        $executar->bindValue(':email', $email);
-        $executar->execute();
-        $result = $executar->fetch();
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+        $result = $stmt->fetch();
 
         return $result ? true : false;
     }
 
-    public function CadastrarUsuario($data)
+    public function cadastrarUsuario($data)
     {
         $db = $this->db;
 
@@ -36,38 +36,38 @@ class Usuarios
         $sql = "INSERT INTO usuarios(nome, tipos, email, senha, data_cadastro) 
                 VALUES (:nome, :tipos, :email, :senha, :data_cadastro)";
 
-        $executar = $db->prepare($sql);
-        $executar->bindValue(':nome', $data['nome']);
-        $executar->bindValue(':tipos', $data['tipo']);
-        $executar->bindValue(':email', $data['email']);
-        $executar->bindValue(':senha', $data['senha']);
-        $executar->bindValue(':data_cadastro', $current_date);
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':nome', $data['nome']);
+        $stmt->bindValue(':tipos', $data['tipo']);
+        $stmt->bindValue(':email', $data['email']);
+        $stmt->bindValue(':senha', $data['senha']);
+        $stmt->bindValue(':data_cadastro', $current_date);
 
-        $executar->execute();
-        $affected_lines = $executar->rowCount();
+        $stmt->execute();
+        $affected_lines = $stmt->rowCount();
 
         return ($affected_lines > 0) ? ['code' => 200, 'status' => 'Cadastro realizado com sucesso'] : ['code' => 400, 'status' => 'Erro ao cadastrar usuário'];
     }
 
-    public function ExcluirUsuario($adminEmail, $email)
+    public function excluirUsuario($adminEmail, $email)
     {
         $db = $this->db;
 
         $sql = "SELECT * FROM usuarios WHERE email = :email AND tipos = 'administrador' LIMIT 1";
-        $executar = $db->prepare($sql);
-        $executar->bindValue(':email', $adminEmail);
-        $executar->execute();
-        $adminResult = $executar->fetch();
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':email', $adminEmail);
+        $stmt->execute();
+        $adminResult = $stmt->fetch();
 
         if (!$adminResult) {
             return ['code' => 403, 'status' => 'Ação não permitida. Apenas administradores podem excluir usuários.'];
         }
 
         $sql_delete = "DELETE FROM usuarios WHERE email = :email";
-        $executar = $db->prepare($sql_delete);
-        $executar->bindValue(':email', $email);
-        $executar->execute();
-        $affected_lines = $executar->rowCount();
+        $stmt = $db->prepare($sql_delete);
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+        $affected_lines = $stmt->rowCount();
 
         return ($affected_lines > 0) ? ['code' => 200, 'status' => 'Usuário excluído com sucesso'] : ['code' => 400, 'status' => 'Usuário não encontrado'];
     }

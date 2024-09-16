@@ -18,13 +18,13 @@ class Acessos
 
         $sql = "INSERT INTO acessos (localizacao, data_acesso) VALUES (:localizacao, :data_acesso)";
 
-        $executar = $db->prepare($sql);
+        $stmt = $db->prepare($sql);
 
-        $executar->bindValue(':localizacao', $localizacao);
-        $executar->bindValue(':data_acesso', time()); 
+        $stmt->bindValue(':localizacao', $localizacao);
+        $stmt->bindValue(':data_acesso', time()); 
 
-        $executar->execute();
-        $affected_lines = $executar->rowCount();
+        $stmt->execute();
+        $affected_lines = $stmt->rowCount();
 
         return ($affected_lines > 0) ? ['code' => 200, 'status' => 'Acesso registrado com sucesso'] : ['code' => 400, 'status' => 'Erro ao registrar acesso'];
     }
@@ -34,10 +34,10 @@ class Acessos
         $db = $this->db;
 
         $sql = "SELECT COUNT(*) AS total_acessos FROM acessos";
-        $executar = $db->prepare($sql);
-        $executar->execute();
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
 
-        $resultado = $executar->fetch();
+        $resultado = $stmt->fetch();
 
         return ($resultado) ? ['code' => 200, 'total_acessos' => $resultado['total_acessos']] : ['code' => 400, 'status' => 'Erro ao contar acessos'];
     }
