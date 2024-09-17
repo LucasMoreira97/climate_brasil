@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public/css/styles.css">
+</head>
+
+<body>
+
+
+    <div class="pagina">
+
+        <div class="cabecalho">
+            <div class="logo">
+                <img src="./public/image/logo_principal.png" alt="climate brasil">
+                <img src="./public/image/logo_cartas.png" alt="cartas climate brasil">
+            </div>
+
+        </div>
+
+        <div class="container">
+
+            <p class="titulo-pagina">CARTAS DE DIREITOS CLIMÁTICOS PELO BRASIL</p>
+
+            <div class="flex-container">
+
+                <div class="item texto-medio">
+                    <ul class="regioes">
+                        <li onclick="dadospagina.carregarMapa(null, 'Norte')">- Norte</li>
+                        <br>
+                        <li>- Nordeste</li>
+                        <br>
+                        <li>- Centro-Oeste</li>
+                        <br>
+                        <li>- Sudeste</li>
+                        <br>
+                        <li>- Sul</li>
+                    </ul>
+
+                    <ul class="ajuda">
+                        <li>Fale conosco</li>
+                        <li>Como participar</li>
+                    </ul>
+
+                    <ul class="logo-apoio">
+                        <li><img src="./public/image/logo_principal.png"></li>
+                        <li><img src="./public/image/fundo_canada.png"></li>
+                        <li><img src="./public/image/cbc-logo.png"></li>
+                    </ul>
+
+                </div>
+
+                <div class="item mapa">
+                    <div id="mapa-container"></div>
+                </div>
+
+            </div>
+
+            <!-- <button onclick="dadospagina.carregarMapa()">teste</button> -->
+
+            <div class="regiao">
+
+                <!-- <div class="nome-regiao">
+                    <img src="./public/image/pin-regiao.svg" alt="">
+                    <span>Norte</span>
+                </div>
+
+                <div class="cartas-regiao">
+                    <ul>
+                        <li>CARTA DA TERRA RONCA</li>
+                        <li>CARTA DE SÃO GONÇALO</li>
+                        <li>CARTA DE TESTE TERRA RONCA 2</li>
+                    </ul>
+                </div> -->
+
+            </div>
+
+            <div class="carta">
+
+                <div class="container-carta">
+
+                    <div class="foto-cartas">
+                        <img src="./public/image/carta_sao_goncalo.png" alt="">
+                    </div>
+
+                    <div class="detalhes-cartas">
+
+                        <p class="titulo-carta">CARTA DA TERRA RONCA</p>
+
+                        <p class="resumo-carta">
+                            São Gonçalo, localizado na região metropolitana do Rio de Janeiro, é o segundo município
+                            mais populoso do estado, com mais de 1 milhão de habitantes. A cidade é conhecida por sua
+                            diversidade cultural e histórica, além de enfrentar desafios como a urbanização acelerada, a
+                            falta de infraestrutura básica e os impactos das mudanças climáticas, que afetam diretamente
+                            a qualidade de vida da população.
+                        </p>
+
+                        <ul>
+                            <li>Saneamento</li>
+                            <li>Segurança alimentar</li>
+                            <li>Urbanização</li>
+                            <li>Gênero e raça</li>
+                        </ul>
+
+                        <button class="leia-na-integra">LEIA NA ÍNTEGRA</button>
+
+                    </div>
+
+                </div>
+
+                <div class="parceiros">
+                    <p>Parceiros</p>
+                    <ul class="logo-apoio">
+                        <li><img src="./public/image/logo_principal.png"></li>
+                        <li><img src="./public/image/fundo_canada.png"></li>
+                        <li><img src="./public/image/cbc-logo.png"></li>
+                    </ul>
+                </div>
+
+
+                <div class="demandas">
+                    <div class="titulo-demandas">Saneamento</div>
+
+                    <div class="content-demandas">
+
+
+                        <div class="foto-demanda">
+                            <img src="./public/image/imagem_exemplo_1.jpg" alt="Imagem Exemplo">
+                        </div>
+
+
+                        <div class="texto-demanda">
+
+                            <span class="topico">Criação de programa de turismo de base comunitária e restauração dos ecossistemas costeiros</span>
+
+                            <p class="texto-topico">Promover o turismo de base comunitária (TBC), valorizando e integrando práticas e o bem viver da comunidade pesqueira local. Dar visibilidade e recursos aos pescadores artesanais, integrando-os em circuitos educativos, produtivos e culturais. Além de garantir acesso a fundos de incentivo e espaços de comercialização para promover sustentabilidade e inclusão social, focando inicialmente na Praia das Pedrinhas. Implementar projetos de restauração ecológica para preservar ecossistemas costeiros e garantir o sustento das comunidades. Envolver as comunidades locais para fortalecer a identidade cultural e adaptar soluções às realidades locais</p>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="texto-demanda-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+                        aspernatur eius ducimus suscipit totam recusandae debitis cum explicabo laudantium
+                        praesentium, illum quod molestias! Rerum facilis nemo ex harum minima maxime. consectetur
+                        adipisicing elit. Similique aspernatur eius ducimus suscipit totam recusandae debitis cum
+                        explicabo laudantium praesentium, illum quod molestias! Rerum facilis nemo ex harum minima
+                        maxime.< consectetur adipisicing elit. Similique aspernatur eius ducimus suscipit totam
+                            recusandae debitis cum explicabo laudantium praesentium, illum quod molestias! Rerum facilis
+                            nemo ex harum minima maxime.< consectetur adipisicing elit. Similique aspernatur eius
+                            ducimus suscipit totam recusandae debitis cum explicabo laudantium praesentium, illum quod
+                            molestias! Rerum facilis nemo ex harum minima maxime.< consectetur adipisicing elit.
+                            Similique aspernatur eius ducimus suscipit totam recusandae debitis cum explicabo laudantium
+                            praesentium, illum quod molestias! Rerum facilis nemo ex harum minima maxime.<</div>
+                    </div>
+
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src="./public/js/jquery-3.6.0.min.js"></script>
+        <script src="./public/js/dadosPagina.js"></script>
+        <script src="./public/js/mapa.js"></script>
+        <script src="./public/js/teste.js"></script>
+
+</body>
+
+</html>
