@@ -372,23 +372,13 @@ body {
     justify-content: start;
 }
 
-.demandas {
-    font-family: var(--fonte-texto);
-    color: var(--cor-do-texto);
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.parceiros img{
+    height: auto;
+    width: 100px;
 }
 
-.demandas .titulo-demandas {
-    width: 100%;
-    margin-bottom: 20px;
-    font-family: var(--fonte-subtitulo);
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.demandas .content-demandas {
+/* ----------------------------------------- */
+.content-demandas{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -396,7 +386,7 @@ body {
     width: 100%;
 }
 
-.demandas .foto-demanda {
+.foto-demanda{
     flex: 1;
     max-width: 50%;
     padding-right: 20px;
@@ -404,46 +394,75 @@ body {
     flex-direction: column;
 }
 
-.demandas .texto-demanda {
+.texto-demanda {
     flex: 1;
     max-width: 50%;
+    min-width: 50%;
     display: flex;
     flex-direction: column;
-    text-align: justify;
+    /* justify-content: center; */
 }
 
-.texto-demanda-2 {
-    text-align: justify;
-}
+
+
 
 /* ----------------------------------- */
 
-.topico {
-    cursor: pointer;
-    display: block;
-    position: relative;
+.titulo-demanda{
+    font-family: var(--fonte-subtitulo);
+    color: var(--cor-do-texto);
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.topico::before {
-    content: '';
-    display: inline-block;
-    background-image: url('../image/chevron-right-solid.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
+.topico {
+    /* margin-top: 15px; */
+    font-family: var(--fonte-subtitulo);
+    color: #FF6600;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.seta {
+    margin-right: 10px;
+    transition: transform 0.3s ease;
     width: 16px;
     height: 16px;
-    margin-right: 10px;
-    transition: transform 0.3s;
-}
-
-.topico.active::before {
-    transform: rotate(90deg);
 }
 
 .texto-topico {
+    font-family: var(--fonte-texto);
+    color: var(--cor-do-texto);
+    font-size: 13px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease;
+    margin: 0;
+}
+
+.expandido .texto-topico {
+    max-height: 500px;
+}
+
+.expandido .seta {
+    transform: rotate(90deg);
+}
+
+.foto-demanda img{
+    max-width: 100%;
+}
+
+/* ----------------------------------------------------------------- */
+
+ul .active{
+    color: var(--branco);
+    background-color: var(--laranja-escuro);
+    border: 2px solid var(--laranja-escuro);
 }
 
 @keyframes cair {

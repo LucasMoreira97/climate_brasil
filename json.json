@@ -1,0 +1,59 @@
+[
+    {
+        "id_demanda": 1,
+        "demanda": "CONSERVAÇÃO DO CERRADO (FAUNA E FLORA)",
+        "foto_demanda": "/climate_brasil/uploads/imagem/orla.png",
+        "topicos": [
+            {
+                "topico": "Proteção Ambiental",
+                "texto_topico": "É preciso garantir uma equidade na proteção do Cerrado. Moradores apontam que algumas questões importantes de serem cobertas por essa proteção legal são a limitação dos gados nas Veredas, fiscalização de crimes ambientais e proibição da venda de estilingue, rede de arrasto e fogos de artifício para coibir a cultura de caça atual. Além disso, é necessário o incentivo e a valorização do conhecimento local como base para criação de medidas e políticas públicas de proteção socioambiental."
+            },
+            {
+                "topico": "Sociobio Economia",
+                "texto_topico": "É preciso preservar o que ainda temos para garantir um futuro mas também fomentar as riquezas que seguem resistindo. Mulheres da região iniciaram um coletivo que fomenta a biodiversidade local chamado Mulheres da Sociobiodiversidade que precisa ser fortalecido. Além disso, garantir o estímulo e impulsionamento de pequenas indústrias voltadas ao frutos locais, como baru e buriti, é fortalecer a cultura do Cerrado enquanto se preserva a suas maiores riquezas: seu povo e seus frutos."
+            },
+            {
+                "topico": "Turismo de base comunitária e educação ambiental",
+                "texto_topico": "Outra estratégia verde para garantir proteção e renda aos moradores locais é através de iniciativas como essas. O ecoturismo é capaz de promover a geração de renda para a população local enquanto mantém um uso sustentável do patrimônio natural e cultural da região. Para garantir que essa iniciativa funcione é necessário capacitar e formar condutores dessa rede turística sustentável, pessoas da própria região em especial. Esses atores, que carregam o conhecimento do local, precisam ter acesso e espaço também nas decisões de gestão do parque. Essa é uma prioridade pautada por toda a comunidade. E para tornar essas formações alinhadas à realidade, é preciso a criação do centro de pesquisas e análises para a ciência voltados para a comunidade, as quais produzirão informações que servirão não só para os guias condutores como para toda a população. Com esse centro é possível engajar e aumentar a discussão de educação ambiental nas escolas, por exemplo."
+            }
+        ]
+    },
+    {
+        "id_demanda": 2,
+        "demanda": "COMBATE AO FOGO",
+        "foto_demanda": "/climate_brasil/uploads/imagem/comabate_ao_fogo.png",
+        "topicos": [
+            {
+                "topico": "Incentivo para a Brigada Comunitária",
+                "texto_topico": "Moradores relatam que a brigada, tecnologia social criada pelo próprio povo, hoje precisa decidir entre o combate ao fogo e a busca de fontes de renda. É necessário formalizar e valorizar esse trabalho paliativo que tem salvado e mitigado os efeitos dos incêndios. Por isso, é necessário financiar esse trabalho, com a remuneração das pessoas envolvidas e com os equipamentos necessários. Um caminho para isso seria uma contribuição mensal da prefeitura proveniente do ICMS Ecológico e PSA (no caso do município Guarani de Goiás) para o fundo da Brigada, visto que esse recurso pode custear a alimentação e despesas dos brigadistas durante o combate ao fogo."
+            },
+            {
+                "topico": "Educação sobre a queima prescrita e controlada",
+                "texto_topico": "Os incêndios ilegais degradam o Bioma Cerrado além de desregular processos naturais. Moradores reforçam que a política esperada não precisa ser de 'Fogo Zero' mas sim um espaço de respeito ao fogo como um processo natural do bioma.\nPara isso é preciso um acompanhamento e monitoramento dessas queimadas e escuta de quem já conhece e entende do bioma: o povo do Cerrado.\nEsse processo educativo de ampliar a temática da queima prescrita contribuirá para a manutenção do equilíbrio do ecossistema para a população local, além de produzir mais estudos específicos sobre como o território reage à queima prescrita voltada para a preservação do bioma.\nNo mais, é importante que essa formação chegue também nas escolas."
+            },
+            {
+                "topico": "Contratação de mais brigadistas",
+                "texto_topico": "Incentivar alguns pontos fixos nas feiras da Maré com barracas agroecológicas para que sejam distribuídos produtos agroecológicos e materiais fruto de produtores locais, incluindo artesanato para disseminar conhecimentos e ideias sobre agroecologia, nutrição e saúde, auxiliando na reeducação alimentar. Os incêndios também são desafios em outros biomas, que, ao contrário do Cerrado, tiveram queda nos índices de ocorrência nos últimos anos. Por isso, um passo importante para potencializar esse trabalho é realizar intercâmbios com outras unidades de conservação para troca e aprendizado mútuo."
+            }
+        ]
+    },
+    {
+        "id_demanda": 3,
+        "demanda": "DIREITO À ÁGUA",
+        "foto_demanda": "/climate_brasil/uploads/imagem/direito_a_agua.jpeg",
+        "topicos": [
+            {
+                "topico": "Responsabilização, pagamento e fiscalização",
+                "texto_topico": "Apesar de serem quem menos impacta, a população do Cerrado é a mais afetada pelos efeitos na qualidade de água na região. É preciso nomear e cobrar mudanças, para isso, o primeiro passo é que o agronegócio, os atores da contaminação das águas, sejam responsabilizados. Um processo de reparação e mitigação não só dos efeitos à natureza, mas também dos impactos diretos à população, depende de uma integração federativa entre os estados da Bahia e Goiás. Esse diálogo também é essencial para a discussão sobre temas chaves, como o licenciamento dos super poços nas fazendas, avancem. É necessário que os governos cobrem daqueles que lucram com esses impactos, empresas e fazendas devem fazer pagamentos às prefeituras pelo uso dos recursos naturais. Além da cobrança financeira, é crucial que os municípios, em conjunto com os órgãos responsáveis, fiscalizem e monitorem novas obras. Em tempo de preservar o que ainda temos, é necessário uma verificação constante de obras no entorno dos corpos hídricos, para garantir a preservação das matas ciliares e outras áreas de preservação permanente e evitar que o material utilizado nas obras não seja proveniente de desmatamento."
+            },
+            {
+                "topico": "Governança Popular das Águas",
+                "texto_topico": "Água é um bem comum vital e coletivo, quem mais sente a ausência desse direito hoje no Cerrado é a população, pessoas comuns que além de não lucrarem com as mudanças que ocorreram ainda querem e buscam formas coletivas de contribuir para uma mudança no curso que se deu para a água. Por isso pedem pela implementação de um Comitê de gestão das Águas que cuidará de forma cidadã desse bem. As contaminações e alterações também precisam ser estudadas para que se possa planejar estratégias de adaptação e mitigação, por isso é preciso fomentar mais pesquisas para saber sobre a qualidade da água, monitorando o que está acontecendo e apontando estratégias de próximos passos. Essas são medidas de médio e longo prazo que para se consolidarem precisam de ações emergenciais no hoje, como a garantia de caminhões pipas permanentes e constantes no povoado."
+            },
+            {
+                "topico": "Proteção das Nascentes",
+                "texto_topico": "O primeiro passo para conservação e transformação é a recuperação das nascentes que dão vida e forma ao Cerrado como um todo: o bioma, a fauna, flora e povo. É preciso também que se torne atrativa a criação de novas Reserva Particular do Patrimônio Natural (RPPN), elas são unidades de conservação privadas em que o proprietário contribui de forma voluntária para a conservação da diversidade biológica da sua terra. Essa ferramenta é estratégica para o Cerrado devido às particularidades locais, mas precisa receber maior incentivo governamental."
+            }
+        ]
+    }
+]

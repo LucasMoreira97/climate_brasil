@@ -29,15 +29,15 @@ class Cartas
             return ['code' => 400, 'status' => 'Erro: já existe uma carta com esse título'];
         }
 
-        $sql = "INSERT INTO cartas (titulo, resumo, demandas, imagens, coordenadas_pino, estado, abreviacao_estado, cidade)
-                VALUES (:titulo, :resumo, :demandas, :imagens, :coordenadas_pino, :estado, :abreviacao_estado, :cidade)";
+        $sql = "INSERT INTO cartas (titulo, resumo, demandas, imagem, coordenadas_pino, estado, abreviacao_estado, cidade)
+                VALUES (:titulo, :resumo, :demandas, :imagem, :coordenadas_pino, :estado, :abreviacao_estado, :cidade)";
 
         $stmt = $this->db->prepare($sql);
 
         $stmt->bindValue(':titulo', $data['titulo']);
         $stmt->bindValue(':resumo', $data['resumo']);
         $stmt->bindValue(':demandas', $data['demandas']);
-        $stmt->bindValue(':imagens', $data['imagens']);
+        $stmt->bindValue(':imagem', $data['imagem']);
         $stmt->bindValue(':coordenadas_pino', $data['coordenadas_pino']);
         $stmt->bindValue(':estado', $data['estado']);
         $stmt->bindValue(':abreviacao_estado', $data['abreviacao_estado']);
@@ -57,7 +57,7 @@ class Cartas
             return ['code' => 400, 'status' => 'Erro: já existe uma carta com esse novo título'];
         }
 
-        $sql = "UPDATE cartas SET titulo = :novoTitulo, resumo = :resumo, demandas = :demandas, imagens = :imagens, coordenadas_pino = :coordenadas_pino,
+        $sql = "UPDATE cartas SET titulo = :novoTitulo, resumo = :resumo, demandas = :demandas, imagem = :imagem, coordenadas_pino = :coordenadas_pino,
                estado = :estado, abreviacao_estado = :abreviacao_estado, cidade = :cidade
                 WHERE titulo = :titulo";
 
@@ -67,7 +67,7 @@ class Cartas
         $stmt->bindValue(':novoTitulo', $data['novoTitulo']);
         $stmt->bindValue(':resumo', $data['resumo']);
         $stmt->bindValue(':demandas', $data['demandas']);
-        $stmt->bindValue(':imagens', $data['imagens']);
+        $stmt->bindValue(':imagem', $data['imagem']);
         $stmt->bindValue(':coordenadas_pino', $data['coordenadas_pino']);
         $stmt->bindValue(':estado', $data['estado']);
         $stmt->bindValue(':abreviacao_estado', $data['abreviacao_estado']);
