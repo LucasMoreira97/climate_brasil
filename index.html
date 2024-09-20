@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./public/css/styles.css">
+    <link rel="stylesheet" href="./public/css/mapa.css">
 </head>
 
 <body>
@@ -25,9 +26,14 @@
 
             <p class="titulo-pagina">CARTAS DE DIREITOS CLIMÁTICOS PELO BRASIL</p>
 
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa optio facilis at reprehenderit, laboriosam, iusto adipisci perspiciatis expedita illum aliquid voluptatibus eius totam quis modi! Ducimus distinctio modi officiis voluptatibus.</p>
+
             <div class="flex-container">
 
-                <div class="item texto-medio">
+
+
+                <div class="item texto-medio" style="margin-top: 30vh;">
+
                     <ul class="regioes">
                         <li onclick="dadospagina.carregarMapa(null, 'Norte')">- Norte</li>
                         <br>
@@ -59,166 +65,16 @@
 
             </div>
 
-            <!-- <button onclick="dadospagina.carregarMapa()">teste</button> -->
-
-            <div class="regiao">
-
-                <!-- <div class="nome-regiao">
-                    <img src="./public/image/pin-regiao.svg" alt="">
-                    <span>Norte</span>
-                </div>
-
-                <div class="cartas-regiao">
-                    <ul>
-                        <li>CARTA DA TERRA RONCA</li>
-                        <li>CARTA DE SÃO GONÇALO</li>
-                        <li>CARTA DE TESTE TERRA RONCA 2</li>
-                    </ul>
-                </div> -->
-
-            </div>
+            <div class="regiao"></div>
 
             <div class="carta">
+                <div class="container-carta"></div>
+                <div class="parceiros"></div>
+                <div class="demandas"></div>
+            </div>
 
-                <div class="container-carta">
-
-                    <!-- <div class="foto-cartas">
-                        <img src="./public/image/carta_sao_goncalo.png" alt="">
-                    </div>
-
-                    <div class="detalhes-cartas">
-
-                        <p class="titulo-carta">CARTA DA TERRA RONCA</p>
-
-                        <p class="resumo-carta">
-                            São Gonçalo, localizado na região metropolitana do Rio de Janeiro, é o segundo município
-                            mais populoso do estado, com mais de 1 milhão de habitantes. A cidade é conhecida por sua
-                            diversidade cultural e histórica, além de enfrentar desafios como a urbanização acelerada, a
-                            falta de infraestrutura básica e os impactos das mudanças climáticas, que afetam diretamente
-                            a qualidade de vida da população.
-                        </p>
-
-                        <ul>
-                            <li>Saneamento</li>
-                            <li>Segurança alimentar</li>
-                            <li>Urbanização</li>
-                            <li>Gênero e raça</li>
-                        </ul>
-
-                        <button class="leia-na-integra">LEIA NA ÍNTEGRA</button>
-
-                    </div> -->
-
-                </div>
-
-                <div class="parceiros">
-                    <!-- <p>Parceiros</p>
-                    <ul class="logo-apoio">
-                        <li><img src="./public/image/logo_principal.png"></li>
-                        <li><img src="./public/image/fundo_canada.png"></li>
-                        <li><img src="./public/image/cbc-logo.png"></li>
-                    </ul> -->
-                </div>
-
-
-
-                <div class="demandas">
-                    <!-- <div class="titulo-demanda">Demandas de saneamento da carta da maré</div>
-
-                    <div class="content-demandas">
-
-                        <div class="foto-demanda">
-                            <img src="./public/image/imagem_exemplo_1.jpg" alt="Imagem Exemplo">
-                        </div>
-
-                        <div class="texto-demanda">
-
-                            <div class="demanda-visualizada" onmouseover="toggleConteudo(this)" onmouseout="toggleConteudo(this)">
-
-                                <div class="topico">
-                                    <img class="seta" src="./public/image/chevron-right-solid.svg">
-                                    Criação de programa de turismo de base comunitária e restauração dos ecossistemas
-                                    costeiros
-                                </div>
-
-                                <p class="texto-topico">
-                                    Promover o turismo de base comunitária (TBC), valorizando e integrando práticas e o
-                                    bem viver da comunidade pesqueira local. Dar visibilidade e
-                                    recursos aos pescadores artesanais, integrando-os em circuitos educativos,
-                                    produtivos e culturais. Além de garantir acesso a fundos de incentivo e
-                                    espaços de comercialização para promover sustentabilidade e inclusão social, focando
-                                    inicialmente na Praia das Pedrinhas. Implementar projetos de restauração ecológica
-                                    para
-                                    preservar ecossistemas costeiros e garantir o sustento das comunidades. Envolver as
-                                    comunidades locais para fortalecer a identidade cultural e adaptar soluções às
-                                    realidades locais.
-                                </p>
-
-                            </div>
-
-
-                            <div class="demanda-visualizada" onmouseover="toggleConteudo(this)" onmouseout="toggleConteudo(this)">
-
-                                <div class="topico">
-                                    <img class="seta" src="./public/image/chevron-right-solid.svg">
-                                    Criação de programa de turismo de base comunitária e restauração dos ecossistemas
-                                    costeiros
-                                </div>
-
-                                <p class="texto-topico">
-                                    Promover o turismo de base comunitária (TBC), valorizando e integrando práticas e o
-                                    bem viver da comunidade pesqueira local. Dar visibilidade e
-                                    recursos aos pescadores artesanais, integrando-os em circuitos educativos,
-                                    produtivos e culturais. Além de garantir acesso a fundos de incentivo e
-                                    espaços de comercialização para promover sustentabilidade e inclusão social, focando
-                                    inicialmente na Praia das Pedrinhas. Implementar projetos de restauração ecológica
-                                    para
-                                    preservar ecossistemas costeiros e garantir o sustento das comunidades. Envolver as
-                                    comunidades locais para fortalecer a identidade cultural e adaptar soluções às
-                                    realidades locais.
-                                </p>
-
-                            </div>
-
-
-                            <div class="demanda-visualizada" onmouseover="toggleConteudo(this)" onmouseout="toggleConteudo(this)">
-
-                                <div class="topico">
-                                    <img class="seta" src="./public/image/chevron-right-solid.svg">
-                                    Criação de programa de turismo de base comunitária e restauração dos ecossistemas
-                                    costeiros
-                                </div>
-
-                                <p class="texto-topico">
-                                    Promover o turismo de base comunitária (TBC), valorizando e integrando práticas e o
-                                    bem viver da comunidade pesqueira local. Dar visibilidade e
-                                    recursos aos pescadores artesanais, integrando-os em circuitos educativos,
-                                    produtivos e culturais. Além de garantir acesso a fundos de incentivo e
-                                    espaços de comercialização para promover sustentabilidade e inclusão social, focando
-                                    inicialmente na Praia das Pedrinhas. Implementar projetos de restauração ecológica
-                                    para
-                                    preservar ecossistemas costeiros e garantir o sustento das comunidades. Envolver as
-                                    comunidades locais para fortalecer a identidade cultural e adaptar soluções às
-                                    realidades locais.
-                                </p>
-
-                            </div>
-
-
-
-
-                        </div>
-
-
-
-                    </div> -->
-
-                </div>
-
-
-
-
-
+            <div class="como-participar">
+                <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ut illo fugiat mollitia laboriosam in quia rerum, aliquam officia itaque eligendi distinctio ab unde perspiciatis amet ea corporis commodi rem. -->
             </div>
 
         </div>
@@ -228,15 +84,8 @@
     <script src="./public/js/jquery-3.6.0.min.js"></script>
     <script src="./public/js/dadosPagina.js"></script>
     <script src="./public/js/mapa.js"></script>
-    <script src="./public/js/teste.js"></script>
 
     <script src="./public/js/interacao.js"></script>
-
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
 
 </body>
 

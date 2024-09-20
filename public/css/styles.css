@@ -88,18 +88,20 @@ body {
 }
 
 .mapa {
-    min-width: 60%;
+    min-width: 80%;
 }
 
+
 .texto-medio {
+    max-width: 20%;
     margin-top: 5vh;
-    font-size: 20px;
+    font-size: 14px;
     font-family: var(--fonte-subtitulo);
     font-weight: bold;
 }
 
 .texto-medio .regioes {
-    font-size: 28px;
+    font-size: 16px;
     color: var(--cor-do-texto);
     padding: 0;
     margin: 0;
@@ -180,48 +182,6 @@ body {
 }
 
 /* -------------------- */
-
-#mapa-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-#mapa {
-    width: 100%;
-    height: auto;
-}
-
-.pino {
-    position: absolute;
-    width: 29px;
-    height: 38px;
-    background-image: url('../image/pin1.svg');
-    background-size: cover;
-    transform: translate(-50%, -100%);
-    pointer-events: auto;
-    animation: cair 0.4s ease-out forwards;
-    cursor: pointer;
-}
-
-.tooltip {
-    margin-bottom: 120px;
-    background-color: var(--branco);
-    border: 1px solid var(--laranja);
-    color: var(--cor-do-texto);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-}
-
-.pino:hover .tooltip {
-    opacity: 1;
-}
 
 .regiao {
     font-family: var(--fonte-subtitulo);
@@ -465,16 +425,4 @@ ul .active{
     border: 2px solid var(--laranja-escuro);
 }
 
-@keyframes cair {
-    0% {
-        transform: translate(-50%, -300%);
-        opacity: 0;
-    }
-    60% {
-        opacity: 1;
-        transform: translate(-50%, -80%);
-    }
-    100% {
-        transform: translate(-50%, -100%);
-    }
-}
+
