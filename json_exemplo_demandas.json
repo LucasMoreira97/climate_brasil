@@ -1,9 +1,8 @@
-
 [
     {
         "id_demanda": 1,
         "demanda": "CONSERVAÇÃO DO CERRADO (FAUNA E FLORA)",
-        "foto_demanda": "/climate_brasil/uploads/imagem/orla.png",
+        "foto_demanda": "/climate_brasil/uploads/imagem/conservacao_do_cerrado.jpg",
         "topicos": [
             {
                 "topico": "Proteção Ambiental",
@@ -19,14 +18,14 @@
             }
         ]
     },
-    
+
 
 
 
     {
         "id_demanda": 2,
         "demanda": "COMBATE AO FOGO",
-        "foto_demanda": "/climate_brasil/uploads/imagem/comabate_ao_fogo.png",
+        "foto_demanda": "/climate_brasil/uploads/imagem/comabte_ao_fogo.jpg",
         "topicos": [
             {
                 "topico": "Incentivo para a Brigada Comunitária",
@@ -34,11 +33,11 @@
             },
             {
                 "topico": "Educação sobre a queima prescrita e controlada",
-                "texto_topico": "Os incêndios ilegais degradam o Bioma Cerrado além de desregular processos naturais. Moradores reforçam que a política esperada não precisa ser de 'Fogo Zero' mas sim um espaço de respeito ao fogo como um processo natural do bioma.\nPara isso é preciso um acompanhamento e monitoramento dessas queimadas e escuta de quem já conhece e entende do bioma: o povo do Cerrado.\nEsse processo educativo de ampliar a temática da queima prescrita contribuirá para a manutenção do equilíbrio do ecossistema para a população local, além de produzir mais estudos específicos sobre como o território reage à queima prescrita voltada para a preservação do bioma.\nNo mais, é importante que essa formação chegue também nas escolas."
+                "texto_topico": "Os incêndios ilegais degradam o Bioma Cerrado além de desregular processos naturais. Moradores reforçam que a política esperada não precisa ser de 'Fogo Zero' mas sim um espaço de respeito ao fogo como um processo natural do bioma. Para isso é preciso um acompanhamento e monitoramento dessas queimadas e escuta de quem já conhece e entende do bioma: o povo do Cerrado. Esse processo educativo de ampliar a temática da queima prescrita contribuirá para a manutenção do equilíbrio do ecossistema para a população local, além de produzir mais estudos específicos sobre como o território reage à queima prescrita voltada para a preservação do bioma. No mais, é importante que essa formação chegue também nas escolas."
             },
             {
                 "topico": "Contratação de mais brigadistas",
-                "texto_topico": "Incentivar alguns pontos fixos nas feiras da Maré com barracas agroecológicas para que sejam distribuídos produtos agroecológicos e materiais fruto de produtores locais, incluindo artesanato para disseminar conhecimentos e ideias sobre agroecologia, nutrição e saúde, auxiliando na reeducação alimentar. Os incêndios também são desafios em outros biomas, que, ao contrário do Cerrado, tiveram queda nos índices de ocorrência nos últimos anos. Por isso, um passo importante para potencializar esse trabalho é realizar intercâmbios com outras unidades de conservação para troca e aprendizado mútuo."
+                "texto_topico": "Incentivar alguns pontos fixos nas feiras da Maré com barracas agroecológicas para eu seja distribuído produtos agroecológicos e materiais fruto de produtores locais, incluindo artesanato para disseminar conhecimentos e ideias sobre agroecologia, nutrição e saúde, auxiliando na reeducação alimentar. Os incêndios também são desafios em outros biomas, que, ao contrário do Cerrado, tiveram queda nos índices de ocorrência nos últimos anos. Por isso, um passo importante para potencializar esse trabalho é realizar intercâmbios com outras unidades de conservação para troca e aprendizado mútuo."
             }
         ]
     },

@@ -21,7 +21,6 @@ class dadosPagina {
         });
 
         const data = await response.json();
-        // console.log(data);
 
         data.map(carta => {
             const coordenadas = JSON.parse(carta.coordenadas_pino);
@@ -39,9 +38,15 @@ class dadosPagina {
             id: id_carta,
             css: { left: xPercent + '%', top: yPercent + '%' },
             click: function () {
-                dadospagina.detalhesCarta(id_carta);
+                const targetId = this.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    smoothScrollTo(targetElement, 1000);
+                }
             }
-        });
+        }).attr('data-target', 'carta-' + id_carta); //fazer um id para carta aqui
+
 
         const $tooltip = $('<span></span>', {
             class: 'tooltip', text: titulo
@@ -70,31 +75,20 @@ class dadosPagina {
         const data = await response.json();
         console.log(data);
 
-
-
-        // <div class="nome-regiao">
-        //     <img src="./public/image/pin-regiao.svg" alt="">
-        //     <span>Todas as regiões</span>
-        // </div>
-
-        // <div class="cartas-regiao">
-        //     <ul class="regiao-carta">
-        //     </ul>
-        // </div>
-
-
-        if(regiao == null){
+        if (regiao == null) {
             regiao = 'Todas as regiões';
         }
 
         var cartas_regiao = '';
-        // foto_carta
 
+        $('.lista-cartas').html('');
         data.map(carta => {
-            cartas_regiao += `<li onclick="dadospagina.detalhesCarta(${carta.id})">
+            cartas_regiao += `<li onclick="smoothScrollTo('carta-${carta.id}');">
                                 <p>${carta.titulo}</p>
                                 <img src="${carta.foto_carta}">
                              </li>`
+
+            this.detalhesCarta(carta);
         });
 
         var cartas_listadas = `<div class="nome-regiao">
@@ -111,60 +105,66 @@ class dadosPagina {
         $('.regiao').css({ opacity: 0, position: 'relative', top: '20px' });
         $('.regiao').animate({ opacity: 1, top: '0px' }, 600);
 
-
         ativarItem('.regiao-carta');
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+            smoothScrollTo(hash);
+        }
+
     }
 
-    async detalhesCarta(id_carta) {
+    async detalhesCarta(data) {
 
-        $('.container-carta').html('');
         $('.parceiros').html('');
         $('.demandas').html('');
-
-        const uri = '/climate_brasil/src/controllers/controller.php';
-        const response = await fetch(uri, {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({
-                operacao: 'detalhes_carta', id_carta: id_carta
-            })
-        });
-
-        const data = await response.json();
-        // console.log(data)
 
         var demandas = JSON.parse(data.demandas);
         this.demandas = demandas;
 
         var lista_demandas = '';
         demandas.map(detalhes_demanda => {
-
             var nome_demanda = detalhes_demanda.demanda;
             var id_demanda = detalhes_demanda.id_demanda;
-            lista_demandas += `<li onclick="dadospagina.demandasCarta('${id_demanda}')">${nome_demanda}</li>`;
+            lista_demandas += `<li onclick="dadospagina.demandasCarta('${data.id}','${id_demanda}')">${nome_demanda}</li>`;
         });
 
-        var detalhes_carta = `
-                    <div class="foto-cartas">
-                        <img src="${data.imagem}" alt="">
-                    </div>
+        var link_compartilhado = window.location.href;
 
-                    <div class="detalhes-cartas">
-                        <p class="titulo-carta">${data.titulo}</p>
-                        <p class="resumo-carta">${data.resumo}</p>
-                        <ul>${lista_demandas}</ul>
-                        <button class="leia-na-integra">LEIA NA ÍNTEGRA</button> 
-                    </div>`;
+        if (link_compartilhado.endsWith('/')) {
+            link_compartilhado = link_compartilhado.slice(0, -1) + '#carta-' + data.id;
+        }
 
-        $('.container-carta').html(detalhes_carta);
-        $('.container-carta').css({ opacity: 0, position: 'relative', top: '20px' });
-        $('.container-carta').animate({ opacity: 1, top: '0px' }, 600);
+        var tituloCarta = `<p class="titulo-carta">${data.titulo}</p>`;
+        var imagemCarta = `<div class="foto-cartas">
+                            <img src="${data.imagem}" alt="">
+                         </div>`;
+        var detalhesAcoes = `<div class="detalhes-cartas">
+                                ${window.innerWidth > 750 ? tituloCarta : ''}
+                                <p class="resumo-carta">${data.resumo}</p>
+                                <ul>${lista_demandas}</ul>
+                                <div class="acoes-carta">
+                                    <button class="leia-na-integra">LEIA NA ÍNTEGRA</button>
+                                    <img src="./public/image/square-share-nodes-solid.svg" onclick="compartilharLink('${link_compartilhado}')">
+                                </div>
+                             </div>`;
+
+        var detalhes_carta = `<div class="container-carta" id="carta-${data.id}">
+                                ${window.innerWidth > 750 ? '' : tituloCarta}
+                                ${imagemCarta}
+                                ${detalhesAcoes}
+                              </div>
+                              <div class="parceiros"></div>
+                              <div class="demandas" id_carta="${data.id}"></div>
+                              <hr>`;
+
+
+        $('.lista-cartas').append(detalhes_carta);
+        $('.lista-cartas').css({ opacity: 0, position: 'relative', top: '20px' });
+        $('.lista-cartas').animate({ opacity: 1, top: '0px' }, 600);
 
         //-------------------------------------------------------
         var parceiros = JSON.parse(data.logo_parceiros);
         var logo_parceiros = '';
-
-        // console.log(parceiros);
 
         parceiros.map(parceiro => {
             logo_parceiros += `<li><img src="${parceiro.logo}"></li>`;
@@ -177,38 +177,30 @@ class dadosPagina {
         $('.parceiros').html(div_parceiros);
         $('.parceiros').css({ opacity: 0, position: 'relative', top: '20px' });
         $('.parceiros').animate({ opacity: 1, top: '0px' }, 600);
-
     }
 
 
-    demandasCarta(id_demanda) {
-
-        // console.log(id_demanda);
-        // console.log(this.demandas);
+    demandasCarta(id_carta, id_demanda) {
 
         var demanda_selecionada = this.demandas.find(function (item) {
             return item.id_demanda == id_demanda;
         });
 
-        // console.log(demanda_selecionada);
-
         var titulo_demanda = demanda_selecionada.demanda;
         var imagem_demanda = demanda_selecionada.foto_demanda;
         var topicos_demanda = demanda_selecionada.topicos;
 
-        console.log(imagem_demanda);
-
         var conteudo_topico = '';
         topicos_demanda.map(conteudo => {
-            conteudo_topico += `<div class="demanda-visualizada" onmouseover="toggleConteudo(this)" onmouseout="toggleConteudo(this)">
-                                    <div class="topico">
+            conteudo_topico += `<div class="demanda-visualizada" id="carta-${id_carta}-demanda-${id_demanda}">
+                                    <div class="topico" onclick="toggleConteudoClick(this)">
                                         <img class="seta" src="./public/image/chevron-right-solid.svg">${conteudo.topico}
                                     </div>
                                     <p class="texto-topico">${conteudo.texto_topico}</p>
                                 </div>`;
         });
 
-        $('.demandas').html(`<div class="titulo-demanda">${titulo_demanda}</div>
+        $(`div[id_carta="${id_carta}"]`).html(`<div class="titulo-demanda">${titulo_demanda}</div>
                              <div class="content-demandas">
                                 <div class="foto-demanda">
                                     <img src="${imagem_demanda}">
@@ -216,8 +208,12 @@ class dadosPagina {
                                 <div class="texto-demanda">${conteudo_topico}</div>
                              </div>`);
 
-        $('.demandas').css({ opacity: 0, position: 'relative', top: '20px' });
-        $('.demandas').animate({ opacity: 1, top: '0px' }, 600);
+        $(`div[id_carta="${id_carta}"]`).css({ opacity: 0, position: 'relative', top: '20px' });
+        $(`div[id_carta="${id_carta}"]`).animate({ opacity: 1, top: '0px' }, 600);
+
+
+        smoothScrollTo(`carta-${id_carta}-demanda-${id_demanda}`, 1000, false, -350);
+
     }
 
 }

@@ -26,7 +26,7 @@ switch ($data['operacao']) {
 
     case 'cartas_regiao':
         $regiao = !empty($data['regiao']) ? $data['regiao'] : null;
-        $resposta = (new Cartas)->coordenadaCartas(null, $data['regiao']);
+        $resposta = (new Cartas)->listarCartas(null, $data['regiao']);
         break;
 
     case 'editar_uma_carta';
