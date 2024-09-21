@@ -28,9 +28,7 @@ class dadosPagina {
             this.adicionarPino(coordenadas.x, coordenadas.y, carta.id, carta.titulo);
         });
 
-        if (regiao != null) {
-            this.cartasRegiao(regiao);
-        }
+        this.cartasRegiao(regiao);
 
     }
 
@@ -70,12 +68,33 @@ class dadosPagina {
         });
 
         const data = await response.json();
-        // console.log(data);
+        console.log(data);
+
+
+
+        // <div class="nome-regiao">
+        //     <img src="./public/image/pin-regiao.svg" alt="">
+        //     <span>Todas as regiões</span>
+        // </div>
+
+        // <div class="cartas-regiao">
+        //     <ul class="regiao-carta">
+        //     </ul>
+        // </div>
+
+
+        if(regiao == null){
+            regiao = 'Todas as regiões';
+        }
 
         var cartas_regiao = '';
+        // foto_carta
 
         data.map(carta => {
-            cartas_regiao += `<li onclick="dadospagina.detalhesCarta(${carta.id})">${carta.titulo}</li>`
+            cartas_regiao += `<li onclick="dadospagina.detalhesCarta(${carta.id})">
+                                <p>${carta.titulo}</p>
+                                <img src="${carta.foto_carta}">
+                             </li>`
         });
 
         var cartas_listadas = `<div class="nome-regiao">

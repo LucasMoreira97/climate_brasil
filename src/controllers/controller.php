@@ -25,6 +25,7 @@ switch ($data['operacao']) {
         break;
 
     case 'cartas_regiao':
+        $regiao = !empty($data['regiao']) ? $data['regiao'] : null;
         $resposta = (new Cartas)->coordenadaCartas(null, $data['regiao']);
         break;
 

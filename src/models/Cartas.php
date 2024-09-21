@@ -121,7 +121,7 @@ class Cartas
     public function coordenadaCartas($id_carta = null, $regiao = null, $estado = null)
     {
 
-        $sql = 'SELECT id, titulo, regiao, coordenadas_pino FROM cartas WHERE removida = 0';
+        $sql = 'SELECT id, titulo, foto_carta, regiao, coordenadas_pino FROM cartas WHERE removida = 0';
         $sql .= !empty($id_carta) ? ' AND id = :id_carta' : '';
         $sql .= !empty($regiao) ? ' AND regiao = :regiao' : '';
         $sql .= !empty($estado) ? ' AND estado = :estado' : '';
