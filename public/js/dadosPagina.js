@@ -144,7 +144,7 @@ class dadosPagina {
                                 <ul>${lista_demandas}</ul>
                                 <div class="acoes-carta">
                                     <button class="leia-na-integra">LEIA NA ÍNTEGRA</button>
-                                    <img src="./public/image/square-share-nodes-solid.svg" onclick="compartilharLink('${link_compartilhado}')">
+                                    <button class="compartilhar" onclick="compartilharLink('${link_compartilhado}')">COMPARTILHAR</button>
                                 </div>
                              </div>`;
 

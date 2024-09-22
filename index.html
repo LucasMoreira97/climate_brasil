@@ -11,24 +11,33 @@
 
 <body>
 
-
     <div class="pagina">
 
         <div class="cabecalho">
-            <div class="logo">
-                <img src="./public/image/logo_principal.png" alt="climate brasil">
-                <img src="./public/image/logo_cartas.png" alt="cartas climate brasil">
-            </div>
-
+            <span>
+                CARTAS DE DIREITOS CLIMÁTICOS
+            </span>
         </div>
 
         <div class="container">
 
-            <p class="titulo-pagina">CARTAS DE DIREITOS CLIMÁTICOS PELO BRASIL</p>
-
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa optio facilis at reprehenderit,
-                laboriosam, iusto adipisci perspiciatis expedita illum aliquid voluptatibus eius totam quis modi!
-                Ducimus distinctio modi officiis voluptatibus.</p>
+            <div class="sobre-pagina">
+                <p class="sobre">SOBRE AS CARTAS DE DIREITOS CLIMÁTICOS</p>
+                <p class="informacao">
+                    Cartas de Direitos Climáticos são ferramentas que permitem a mobilização e o engajamento dos
+                    territórios, no encontro do conhecimento tradicional com a ciência do clima, para apresentarem à
+                    sociedade as <strong>demandas prioritárias</strong> de suas comunidades por medidas de adaptação e
+                    mitigação
+                    climática.
+                    Estas medidas são determinadas pelos próprios moradores, através da <strong>troca de vivências e
+                        identificação
+                        dos impactos já sentidos</strong> e em busca da defesa de seus direitos e da justiça climática.
+                    A carta,
+                    então,
+                    vira um instrumento para que os moradores se tornem protagonistas para alavancar soluções, ocupando
+                    espaços estratégicos de fala e tomadas de decisão.
+                </p>
+            </div>
 
             <div class="flex-container">
 
@@ -37,20 +46,20 @@
                     <ul class="regioes">
                         <li onclick="dadospagina.carregarMapa(null, 'Norte')">- Norte</li>
                         <br>
-                        <li>- Nordeste</li>
+                        <li onclick="dadospagina.carregarMapa(null, 'Nordeste')">- Nordeste</li>
                         <br>
-                        <li>- Centro-Oeste</li>
+                        <li onclick="dadospagina.carregarMapa(null, 'Centro-Oeste')">- Centro-Oeste</li>
                         <br>
-                        <li>- Sudeste</li>
+                        <li onclick="dadospagina.carregarMapa(null, 'Sudeste')">- Sudeste</li>
                         <br>
-                        <li>- Sul</li>
+                        <li onclick="dadospagina.carregarMapa(null, 'Sul')">- Sul</li>
                         <br>
                         <li onclick="dadospagina.carregarMapa(null, null)">- Todas as regiões</li>
                     </ul>
 
                     <ul class="ajuda">
-                        <li>Fale conosco</li>
-                        <li>Como participar</li>
+                        <li onclick="smoothScrollTo('fale-conosco')">Fale conosco</li>
+                        <li onclick="smoothScrollTo('como-participar')">Como participar</li>
                     </ul>
 
                 </div>
@@ -88,10 +97,112 @@
 
             <div id="popup" class="popup">Link copiado com sucesso!</div>
 
-            <div class="como-participar">
-                <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ut illo fugiat mollitia laboriosam in quia rerum, aliquam officia itaque eligendi distinctio ab unde perspiciatis amet ea corporis commodi rem. -->
+            <div class="como-participar" id="como-participar">
+
+                <p class="titulo">COMO PARTICIPAR</p>
+
+                <div class="introducao">
+                    <p class="strong">Que tal construir uma Carta de Direitos Climáticos no seu território?</p>
+                    <p>Saiba como acessando a metodologia: CONSTRUINDO CARTAS DE CARTAS DE DIREITOS CLIMÁTICOS</p>
+                </div>
+
+                <div class="metodologia">
+
+                    <div class="capa"><img src="./uploads/imagem/metodologia_cartas.png"></div>
+
+                    <div class="informacao">
+                        <a class="leia"
+                            href="https://drive.google.com/file/d/1POqYRcH24I_oN9z7KL0E842RMx68gtWM/view?usp=drive_link"
+                            target="_blank">LEIA A METODOLOGIA</a>
+
+                        <div class="destaque">
+                            <p>Após conhecer a metodologia, preencha o formulário para construir sua carta:</p>
+                            <a href="https://forms.gle/rvEbMFqe74tKu4gUA ">Preencher formulário</a>
+                        </div>
+
+                        <p>
+                            Colabore com as demandas das cartas
+                            Junte-se a nós nesta jornada em busca da justiça climática. Seja você é um especialista no
+                            assunto ou alguém que apenas começou a se interessar pelo clima, sua contribuição é valiosa.
+                            Juntos, podemos criar um impacto real e defender um mundo mais verde e saudável para todos.
+                            Se você acredita que pode colaborar com qualquer das medidas demandadas pelos territórios
+                            envie uma mensagem para <span class="email">brasil@climatereality.com</span> e entraremos em
+                            contato com você.
+                            O futuro está em nossas mãos.
+                        </p>
+                    </div>
+
+                </div>
+
             </div>
 
+            <hr>
+
+            <div class="outras-literaturas">
+
+                <p class="titulo">Guias e outras leituras sobre as Cartas de Direitos Climáticos</p>
+
+                <div class="ebooks">
+
+                    <div class="ebook">
+                        <p class="titulo-ebook">Metodologia Cartas de Direitos Climáticos</p>
+                        <p class="descricao-ebook">Aprenda como fazer a Carta do seu território.</p>
+
+                        <div><img src="./uploads/imagem/metodologia_cartas.png"></div>
+                        <div><a href="">Baixar</a></div>
+                    </div>
+
+                    <div class="ebook">
+                        <p class="titulo-ebook">Utilizando as Cartas de Direitos Climáticos como ferramenta de
+                            incidência política</p>
+                        <p class="descricao-ebook">Guia para transformar as demandas da sua carta em realidade.</p>
+
+                        <div><img src="./uploads/imagem/cartas_de_direitos.png"></div>
+                        <div><a href="">Baixar</a></div>
+                    </div>
+
+                    <div class="ebook">
+                        <p class="titulo-ebook">Portfolio: Cartas em construção.</p>
+                        <p class="descricao-ebook">Conheça outros propostas de cartas em andamento pelo Brasil</p>
+
+                        <div><img src="./uploads/imagem/cartas_pelo_brasil.png"></div>
+                        <div><a href="">Baixar</a></div>
+                    </div>
+
+                </div>
+
+            </div>
+            <hr>
+
+            <div class="fale-conosco" id="fale-conosco">
+
+                <p class="titulo">Fale conosco</p>
+
+                <ul>
+                    <li>
+                        <span><img src="./public/image/envelope-solid.svg">E-MAIL INSTITUCIONAL</span>
+                        <a href="mailto:brasil@climatereality.com" target="_blank">brasil@climatereality.com</a>
+                    </li>
+
+                    <li>
+                        <span><img src="./public/image/instagram-brands-solid.svg">INSTAGRAM</span>
+                        <a href="https://www.instagram.com/climaterealitybrasil/"
+                            target="_blank">@climaterealitybrasil</a>
+                    </li>
+
+                    <li>
+                        <span><img src="./public/image/linkedin-brands-solid.svg">LINKEDIN </span>
+                        <a
+                            href="https://www.linkedin.com/company/the-climate-reality-project-brasil/posts/?feedView=all">The
+                            Climate Reality Project Brasil</a>
+                    </li>
+
+                    <li>
+                        <span><img src="./public/image/globe-solid.svg">SITE CLIMATE </span>
+                        <a href="https://www.climaterealityproject.org.br/">www.climaterealityproject.org.br</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </div>
@@ -99,7 +210,6 @@
     <script src="./public/js/jquery-3.6.0.min.js"></script>
     <script src="./public/js/dadosPagina.js"></script>
     <script src="./public/js/mapa.js"></script>
-
     <script src="./public/js/interacao.js"></script>
 
 </body>

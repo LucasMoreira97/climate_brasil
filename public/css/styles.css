@@ -1,4 +1,3 @@
-/* Font-face */
 @font-face {
     font-family: 'BrandonGrotesque';
     src: url('../font/BrandonGrotesque-Black.ttf');
@@ -14,11 +13,15 @@
     src: url('../font/Merriweather-Regular.ttf');
 }
 
-/* Root variables */
 :root {
-    --fonte-titulo: 'BrandonGrotesque';
-    --fonte-subtitulo: 'TradeGothic';
-    --fonte-texto: 'Merriweather';
+    --fonte-1: 'BrandonGrotesque';
+    --fonte-2: 'TradeGothic';
+    --fonte-3: 'Merriweather';
+    --tamanho-texto-1: 30px;
+    --tamanho-texto-2: 20px;
+    --tamanho-texto-3: 16px;
+    --tamanho-texto-4: 14px;
+
     --tamanho-pagina: 850px;
     --espaco-pequeno: 1px;
     --espaco-medio: 2px;
@@ -38,7 +41,6 @@
     --verde-alpha13: rgba(142, 198, 63, 0.13);
 }
 
-/* Global */
 body {
     margin: 0;
     padding: 0;
@@ -49,42 +51,49 @@ hr {
     border: none;
     height: 5px;
     background-color: #e558252f;
-    margin: 20px 0;
+    margin: 4vh 0;
 }
 
-/* Pagina */
 .pagina {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.pagina .logo img {
-    height: 65px;
-    width: auto;
-    margin-right: 4vh;
-}
 
-/* Titulo Pagina */
-.titulo-pagina {
-    width: 100%;
-    font-family: var(--fonte-titulo);
-    font-weight: bold;
-    font-size: 27px;
-    color: var(--cor-do-texto);
-    text-decoration: underline;
-    text-decoration-color: var(--verde);
-}
-
-/* Cabecalho and Container */
-.cabecalho, .container {
+.cabecalho,
+.container {
     margin-top: 10px;
     width: var(--tamanho-pagina);
     background-color: var(--branco);
     padding: 2vh var(--padding-geral);
 }
 
-/* Flex-container */
+.cabecalho span {
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--laranja-escuro);
+    font-family: var(--fonte-1);
+}
+
+
+.sobre-pagina {
+    color: var(--cor-do-texto);
+}
+
+.sobre-pagina .sobre {
+    font-family: var(--fonte-2);
+    font-size: var(--tamanho-texto-2);
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.sobre-pagina .informacao {
+    font-family: var(--fonte-3);
+    font-size: var(--tamanho-texto-4);
+    margin-top: 1vh;
+}
+
 .flex-container {
     display: flex;
     flex-direction: row;
@@ -95,28 +104,25 @@ hr {
     flex: 1;
 }
 
-/* Mapa */
 .mapa {
     min-width: 80%;
 }
 
-/* Texto-medio */
 .texto-medio {
     position: absolute;
     margin-top: 40vh;
     margin-left: 10vh;
-    font-size: 14px;
-    font-family: var(--fonte-subtitulo);
+    font-size: var(--tamanho-texto-4);
+    font-family: var(--fonte-2);
     font-weight: bold;
     z-index: 1000;
 }
 
-/* Regioes */
 .texto-medio .regioes {
     padding: 0;
     margin: 0;
     list-style: none;
-    font-size: 16px;
+    font-size: var(--tamanho-texto-3);
     color: var(--cor-do-texto);
     letter-spacing: var(--espaco-grande);
 }
@@ -138,7 +144,6 @@ hr {
     border: 2px solid var(--laranja-escuro);
 }
 
-/* Ajuda */
 .ajuda {
     width: 20vh;
     padding: 10px;
@@ -160,10 +165,9 @@ hr {
     color: var(--branco);
 }
 
-/* Apoio */
 .apoio p {
-    font-family: var(--fonte-subtitulo);
-    font-size: 18px;
+    font-family: var(--fonte-2);
+    font-size: var(--tamanho-texto-2);
     font-weight: bold;
     color: var(--cor-do-texto);
     text-decoration: none;
@@ -187,9 +191,8 @@ hr {
     width: auto;
 }
 
-/* Regiao */
 .regiao {
-    font-family: var(--fonte-subtitulo);
+    font-family: var(--fonte-2);
     font-weight: bold;
 }
 
@@ -197,7 +200,7 @@ hr {
     margin-top: 5vh;
     margin-bottom: 2vh;
     padding: 0;
-    font-size: 18px;
+    font-size: var(--tamanho-texto-3);
     font-weight: bold;
     color: var(--laranja-escuro);
     width: fit-content;
@@ -230,7 +233,6 @@ hr {
     border: 2px solid var(--laranja-escuro);
 }
 
-/* Carta */
 .carta {
     margin-top: 5vh;
 }
@@ -243,7 +245,6 @@ hr {
     width: 100%;
 }
 
-/* Cartas regiao */
 .cartas-regiao {
     display: flex;
     justify-content: center;
@@ -273,10 +274,9 @@ hr {
     display: block;
 }
 
-/* Titulo-carta */
 .titulo-carta {
-    font-family: var(--fonte-titulo);
-    font-size: 40px;
+    font-family: var(--fonte-1);
+    font-size: var(--tamanho-texto-1);
     color: var(--cor-do-texto);
     margin-bottom: 0;
 }
@@ -294,17 +294,16 @@ hr {
     border-radius: 5px;
 }
 
-/* Detalhes-cartas */
 .detalhes-cartas {
-    font-family: var(--fonte-titulo);
+    font-family: var(--fonte-1);
     color: var(--cor-do-texto);
     padding: 1vh 3vh;
 }
 
 .resumo-carta {
-    font-family: var(--fonte-texto);
+    font-family: var(--fonte-3);
     font-weight: 400;
-    font-size: 14px;
+    font-size: var(--tamanho-texto-3);
     text-align: justify;
 }
 
@@ -317,8 +316,8 @@ hr {
 .detalhes-cartas li {
     padding: 0.5vh;
     cursor: pointer;
-    font-family: var(--fonte-texto);
-    font-size: 15px;
+    font-family: var(--fonte-tto);
+    font-size: var(--tamanho-texto-3);
     color: var(--laranja-escuro);
 }
 
@@ -327,16 +326,16 @@ hr {
     transition: all 0.3s ease;
 }
 
-/* Acoes carta */
 .acoes-carta {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 3vh;
-    gap: 20%;
+    gap: 10%;
 }
 
-.acoes-carta button, .acoes-carta img {
+/* .acoes-carta button,
+.acoes-carta img {
     display: inline-block;
     vertical-align: middle;
 }
@@ -344,11 +343,25 @@ hr {
 .acoes-carta img {
     height: 40px;
     width: auto;
+} */
+
+.compartilhar{
+    font-weight: bold;
+    color: var(--verde);
+    border: 2px solid var(--verde);
+    padding: 8px 20px;
+    background-color: #ffffff00;
+    transition: 0.5s;
 }
 
-/* Leia na integra */
+.compartilhar:hover{
+    cursor: pointer;
+    background-color: var(--verde-alpha13);
+    color: var(--verde);
+}
+
 .leia-na-integra {
-    padding: 1vh 2vh;
+    padding: 10px 20px;
     margin: 0;
     cursor: pointer;
     background-color: var(--verde);
@@ -363,14 +376,13 @@ hr {
     color: var(--verde);
 }
 
-/* Parceiros */
 .parceiros {
     margin-top: 4vh;
 }
 
 .parceiros p {
-    font-family: var(--fonte-subtitulo);
-    font-size: 30px;
+    font-family: var(--fonte-2);
+    font-size: var(--tamanho-texto-2);
     color: var(--cor-do-texto);
     font-weight: bold;
     margin-bottom: 0;
@@ -387,7 +399,6 @@ hr {
     height: auto;
 }
 
-/* Content-demandas */
 .content-demandas {
     display: flex;
     flex-direction: row;
@@ -396,7 +407,6 @@ hr {
     width: 100%;
 }
 
-/* Foto-demanda */
 .foto-demanda {
     flex: 1;
     max-width: 50%;
@@ -413,24 +423,22 @@ hr {
     flex-direction: column;
 }
 
-/* Titulo demanda */
 .titulo-demanda {
-    font-family: var(--fonte-subtitulo);
-    font-size: 24px;
+    font-family: var(--fonte-2);
+    font-size: var(--tamanho-texto-2);
     color: var(--cor-do-texto);
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-/* Topico */
 .topico {
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-family: var(--fonte-subtitulo);
-    font-size: 14px;
+    font-family: var(--fonte-2);
+    font-size: var(--tamanho-texto-3);
     font-weight: bold;
-    color: #FF6600;
+    color: var(--laranja-escuro);
     margin-bottom: 10px;
 }
 
@@ -441,11 +449,10 @@ hr {
     transition: transform 0.3s ease;
 }
 
-/* Texto topico */
 .texto-topico {
-    font-family: var(--fonte-texto);
+    font-family: var(--fonte-3);
     color: var(--cor-do-texto);
-    font-size: 13px;
+    font-size: var(--tamanho-texto-4);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease;
@@ -460,19 +467,16 @@ hr {
     transform: rotate(90deg);
 }
 
-/* Foto demanda */
 .foto-demanda img {
     max-width: 100%;
 }
 
-/* Active class */
 ul .active {
     color: var(--branco);
     background-color: var(--laranja-escuro);
     border: 2px solid var(--laranja-escuro);
 }
 
-/* Popup */
 .popup {
     position: fixed;
     top: 50%;
@@ -491,10 +495,198 @@ ul .active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive */
+.como-participar {
+    font-family: var(--fonte-3);
+    color: var(--cor-do-texto);
+}
+
+.como-participar .metodologia {
+    display: flex;
+    width: 100%;
+}
+
+.como-participar .capa {
+    flex: 0 0 30%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.como-participar .capa img {
+    width: 100%;
+    height: auto;
+}
+
+.como-participar .informacao {
+    flex: 0 0 70%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 2vh;
+    font-size: var(--tamanho-texto-4);
+}
+
+.como-participar .titulo {
+    font-family: var(--fonte-1);
+    font-size: var(--tamanho-texto-2);
+    margin-bottom: 0;
+}
+
+.como-participar .introducao p {
+    font-size: var(--tamanho-texto-4);
+    margin: 3px;
+}
+
+.como-participar .introducao .strong {
+    font-weight: bold;
+}
+
+.como-participar .email {
+    color: #38be03;
+}
+
+.como-participar .leia {
+    text-decoration: none;
+    background-color: #8dc63f;
+    color: #FFF;
+    font-weight: bold;
+    padding: 10px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+}
+
+.como-participar .leia:hover {
+    background-color: #8ec63f9a;
+}
+
+.como-participar .destaque {
+    margin-top: 4vh;
+    border: 1px solid #54545449;
+    background-color: #5454540c;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.outras-literaturas {
+    color: var(--cor-do-texto);
+}
+
+.outras-literaturas .titulo {
+    font-family: var(--fonte-1);
+    font-size: var(--tamanho-texto-1);
+    margin-bottom: 2vh;
+}
+
+.outras-literaturas .ebooks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.outras-literaturas .titulo-ebook {
+    color: #38be03;
+    font-family: var(--fonte-2);
+    font-weight: bold;
+    font-size: var(--tamanho-texto-3);
+}
+
+.outras-literaturas .ebook {
+    flex: 0 0 calc(33.33% - 20px);
+    box-sizing: border-box;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.outras-literaturas .ebook div {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    display: inline-block;
+    padding-bottom: 2vh;
+}
+
+.outras-literaturas a {
+    text-decoration: none;
+    background-color: #8dc63f;
+    color: #FFF;
+    border-radius: 5px;
+    padding: 10px 30px;
+    margin-bottom: 6vh;
+}
+
+.outras-literaturas .ebook img {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    height: auto;
+}
+
+/* ---------------------------------------------------------- */
+
+.fale-conosco {
+    color: var(--cor-do-texto);
+    background-color: var(--branco);
+    padding: 20px;
+    text-align: left;
+}
+
+.fale-conosco p.titulo {
+    font-family: var(--fonte-2);
+    font-size: var(--tamanho-texto-2);
+    font-weight: bold;
+    color: var(--laranja-escuro);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.fale-conosco ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fale-conosco ul li {
+    margin-bottom: 15px;
+    font-family: var(--fonte-3);
+    font-size: var(--tamanho-texto-3);
+}
+
+
+.fale-conosco ul li img {
+    margin-right: 10px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.fale-conosco ul li a {
+    color: var(--laranja-escuro);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fale-conosco ul li a:hover {
+    color: var(--laranja);
+    transform: translateX(5px);
+    text-decoration: underline;
+}
+
+/* -------------------------------------------------------------- */
+
 @media (max-width: 768px) {
-    .container, .cabecalho {
-        max-width: 90%;
+
+    .pagina{
+        max-width: 100%;
+        padding: 2vh;
+    }
+
+    .container,
+    .cabecalho {
+        max-width: 100%;
+        padding: 2vh;
     }
 
     .flex-container {
@@ -517,11 +709,11 @@ ul .active {
 
     .texto-medio .regioes {
         letter-spacing: var(--espaco-pequeno);
-        font-size: 35px;
+        font-size: var(--tamanho-texto-1);
     }
 
     .titulo-carta {
-        font-size: 20px;
+        font-size: var(--tamanho-texto-2);
     }
 
     .regiao-carta {
@@ -562,12 +754,8 @@ ul .active {
         width: auto;
     }
 
-    .leia-na-integra {
-        padding: 15px 25px;
-    }
-
     .titulo-demanda {
-        font-size: 16px;
+        font-size: var(--tamanho-texto-3);
     }
 
     .content-demandas {
@@ -585,7 +773,7 @@ ul .active {
     }
 
     .parceiros p {
-        font-size: 16px;
+        font-size: var(--tamanho-texto-3);
     }
 
     .parceiros ul {
@@ -604,4 +792,45 @@ ul .active {
         max-width: 100%;
         height: 10vh;
     }
+
+    /* ----------------------------------------------------- */
+    .como-participar .metodologia {
+        flex-direction: column;
+    }
+
+    .como-participar .capa {
+        flex: 0 0 100%;
+        padding: 0;
+    }
+    
+    .como-participar .informacao {
+        flex: 0 0 100%;
+        padding: 0;
+    }
+    
+    .como-participar .introducao{
+        margin-bottom: 20px;
+    }
+
+    /* ----------------------------------------------------- */
+    .outras-literaturas .ebooks {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* ----------------------------------------------------- */
+    .fale-conosco {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .fale-conosco p.titulo {
+        font-size: var(--tamanho-texto-3);
+    }
+
+    .fale-conosco ul li span {
+        display: block;
+        width: 100%;
+    }
+
 }
