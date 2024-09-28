@@ -392,10 +392,18 @@ hr {
     margin-top: 1vh;
     display: flex;
     justify-content: start;
+    flex-wrap: wrap;
 }
 
-.parceiros img {
-    width: 100px;
+.parceiros ul li {
+    margin-right: 10px;
+    list-style: none;
+    flex: 1 1 auto;
+    max-width: 70px;
+}
+
+.parceiros ul li img {
+    max-width: 100%;
     height: auto;
 }
 

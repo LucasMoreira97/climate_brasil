@@ -15,6 +15,7 @@
 
     <div class="container">
 
+        <div id="mapa-container"></div>
 
         <div class="home">
 
@@ -137,6 +138,7 @@
     </div>
 
     <script src="../js/admin.js"></script>
+    <script src="../js/localizacao_mapa.js"></script>
 
 </body>
 

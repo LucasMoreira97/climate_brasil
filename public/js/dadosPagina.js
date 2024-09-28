@@ -1,8 +1,8 @@
 class dadosPagina {
 
     constructor() {
-        this.carregarMapa();
-        this.demandas = '';
+        // this.carregarMapa();
+        this.demandas = [];
     }
 
     async carregarMapa(estado = null, regiao = null) {
@@ -115,11 +115,13 @@ class dadosPagina {
 
     async detalhesCarta(data) {
 
-        $('.parceiros').html('');
-        $('.demandas').html('');
+        console.log('teste');
+
+        $(`#carta_parceiros_${data.id}`).html('');
+        $(`#carta_demandas_${data.id}`).html('');
 
         var demandas = JSON.parse(data.demandas);
-        this.demandas = demandas;
+        this.demandas[data.id] = demandas;
 
         var lista_demandas = '';
         demandas.map(detalhes_demanda => {
@@ -143,7 +145,7 @@ class dadosPagina {
                                 <p class="resumo-carta">${data.resumo}</p>
                                 <ul>${lista_demandas}</ul>
                                 <div class="acoes-carta">
-                                    <button class="leia-na-integra">LEIA NA ÍNTEGRA</button>
+                                    <a class="leia-na-integra" href="${data.link_pdf}" target="_blank">LEIA NA ÍNTEGRA</a>
                                     <button class="compartilhar" onclick="compartilharLink('${link_compartilhado}')">COMPARTILHAR</button>
                                 </div>
                              </div>`;
@@ -153,8 +155,8 @@ class dadosPagina {
                                 ${imagemCarta}
                                 ${detalhesAcoes}
                               </div>
-                              <div class="parceiros"></div>
-                              <div class="demandas" id_carta="${data.id}"></div>
+                              <div class="parceiros" id="carta_parceiros_${data.id}"></div>
+                              <div class="demandas" id="carta_demandas_${data.id}" id_carta="${data.id}"></div>
                               <hr>`;
 
 
@@ -174,15 +176,15 @@ class dadosPagina {
                     <p>Parceiros</p>
                     <ul class="logo-apoio">${logo_parceiros}</ul>`;
         //-------------------------------------------------------
-        $('.parceiros').html(div_parceiros);
-        $('.parceiros').css({ opacity: 0, position: 'relative', top: '20px' });
-        $('.parceiros').animate({ opacity: 1, top: '0px' }, 600);
+        $(`#carta_parceiros_${data.id}`).html(div_parceiros);
+        $(`#carta_parceiros_${data.id}`).css({ opacity: 0, position: 'relative', top: '20px' });
+        $(`#carta_parceiros_${data.id}`).animate({ opacity: 1, top: '0px' }, 600);
     }
 
 
     demandasCarta(id_carta, id_demanda) {
 
-        var demanda_selecionada = this.demandas.find(function (item) {
+        var demanda_selecionada = this.demandas[id_carta].find(function (item) {
             return item.id_demanda == id_demanda;
         });
 
@@ -192,12 +194,20 @@ class dadosPagina {
 
         var conteudo_topico = '';
         topicos_demanda.map(conteudo => {
+
+            if (conteudo.topico == '') {
+                conteudo.topico = 'Ler essa demanda';
+            }
+
             conteudo_topico += `<div class="demanda-visualizada" id="carta-${id_carta}-demanda-${id_demanda}">
-                                    <div class="topico" onclick="toggleConteudoClick(this)">
-                                        <img class="seta" src="./public/image/chevron-right-solid.svg">${conteudo.topico}
-                                    </div>
-                                    <p class="texto-topico">${conteudo.texto_topico}</p>
-                                </div>`;
+                                        <div class="topico" onclick="toggleConteudoClick(this)">
+                                            <img class="seta" src="./public/image/chevron-right-solid.svg">${conteudo.topico}
+                                        </div>
+                                        <p class="texto-topico">${conteudo.texto_topico}</p>
+                                    </div>`;
+
+
+
         });
 
         $(`div[id_carta="${id_carta}"]`).html(`<div class="titulo-demanda">${titulo_demanda}</div>
